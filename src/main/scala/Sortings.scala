@@ -11,7 +11,7 @@ class Sortings {
       else {
         insert(myList.head, helperInsertionSort(myList.tail))
       }
-      
+
     }
 
     def insert(a: Int, myList: List[Int]): List[Int] =
