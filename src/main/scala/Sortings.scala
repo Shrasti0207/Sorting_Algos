@@ -11,9 +11,7 @@ class Sortings {
       else {
         insert(myList.head, helperInsertionSort(myList.tail))
       }
-
     }
-
     def insert(a: Int, myList: List[Int]): List[Int] =
       if (myList.isEmpty || a <= myList.head) {
         a :: myList
@@ -23,7 +21,6 @@ class Sortings {
       }
     helperInsertionSort(myList)
   }
-
   def selectionSort(listInput: List[Int]): List[Int] = {
     @tailrec
     def innerSelection(listInput: List[Int], list: List[Int] = List()): List[Int] = {
@@ -36,6 +33,22 @@ class Sortings {
     innerSelection(listInput)
   }
 
+  def bubbleSort(listInput: List[Int]): List[Int]={
+
+    def iterate(listInput: List[Int], count: Int): List[Int] = {
+      if (count == listInput.length - 1) listInput
+      else iterate(innerBubbleSort(listInput), count + 1)
+    }
+
+    def innerBubbleSort(listInput: List[Int]): List[Int] = listInput match {
+      case List() => List()
+      case List(firstElement) => List(firstElement)
+      case firstElement :: secondElement :: restList =>
+        if (firstElement > secondElement) secondElement :: innerBubbleSort(firstElement :: restList)
+        else firstElement :: innerBubbleSort(secondElement :: restList)
+    }
+    iterate(listInput, 0)
+  }
 
 }
 
